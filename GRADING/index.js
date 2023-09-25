@@ -11,7 +11,7 @@ rl.question("Enter the student's mark (between 0 and 100): ", (input) => {
 
   if (!isNaN(mark) && mark >= 0 && mark <= 100) {
     const grade = Grade(mark);
-    console.log(`The student's grade is: ${grade}`);
+    console.log(`The grade is: ${grade}`);
   } 
     
 

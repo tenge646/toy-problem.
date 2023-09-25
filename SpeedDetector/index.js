@@ -1,5 +1,5 @@
 const readline = require("readline");
-const speedDetector = require("../speed");
+const speedDetector = require("./speed");
 
 const rl = readline.createInterface({
   input: process.stdin,

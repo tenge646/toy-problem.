@@ -3,7 +3,7 @@ function speedDetector(speed) {
     const demeritPoints = Math.floor((speed - speedLimit) / 5);
   
     if (speed <= speedLimit) {
-      console.log("Ok");
+      console.log("The speed is Okay");
     } else if (demeritPoints <= 12) {
       console.log("Points: " + demeritPoints);
     } else {

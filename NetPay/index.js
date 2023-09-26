@@ -32,7 +32,7 @@ rl.question("Enter your basic salary: ", (basicSalaryInput) => {
     console.log(`Net Salary: ${netSalary}`);
 
     
-    
+  
     rl.close();
   });
 });

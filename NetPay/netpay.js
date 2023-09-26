@@ -1,5 +1,5 @@
 
-function calculatePayee(basicSalary) {
+function calculatePayee(grossSalary) {
     
     const taxBrackets = [
       { minimum: 0, maximum: 24000, rate: 0.1 },
@@ -11,12 +11,11 @@ function calculatePayee(basicSalary) {
   
    
     let tax = 0;
-    for (const bracket of taxBrackets) {
-      const { minimum, maximum, rate } = bracket;
-      if (basicSalary <= minimum) {
+    for (const { minimum, maximum, rate } of taxBrackets) {
+      if (grossSalary <= minimum) {
         continue;
-      } else if (basicSalary <= maximum) {
-        tax += (basicSalary - minimum) * rate;
+      } else if (grossSalary <= maximum) {
+        tax += (grossSalary - minimum) * rate;
         break;
       } else {
         tax += (maximum - minimum) * rate;
@@ -25,17 +24,27 @@ function calculatePayee(basicSalary) {
     return tax;
   }
   
+
   
-  
-  function calculateNHIF(basicSalary) {
+  function calculateNHIF(grossSalary) {
    
-    const nhifRates = [400, 600, 800, 1200, 1500];
+    const nhifRates = [ 
+      { minimum: 0, maximum: 5999, rate: 150 },
+      { minimum: 6000, maximum: 7999, rate: 300 },
+      { minimum: 8000, maximum: 11999, rate: 400 },
+      { minimum: 12000, maximum: 14999, rate: 500},
+      { minimum: 15000, maximum: 19999, rate: 600 },
+      { minimum: 20000, maximum: 24999, rate: 750 }, 
+      { minimum: 25000, maximum: 29999, rate: 850 },
+      { minimum: 30000, maximum: 34999, rate: 900 },
+      { minimum: 35000, maximum: 39999, rate: 950 }, 
+     ];
   
     
     let nhif = 0;
-    for (const rate of nhifRates) {
-      if (basicSalary <= rate) {
-        nhif = basicSalary * 0.075;
+    for (const {minimum,maximum,rate} of nhifRates) {
+      if (grossSalary <= maximum) {
+        nhif = rate ;
         break;
       }
     }
@@ -43,17 +52,15 @@ function calculatePayee(basicSalary) {
   }
   
 
-  function calculateNSSF(basicSalary) {
-   
-    const nssfRate = 0.06; 
-  
-   
-    const nssf = basicSalary * nssfRate;
+  function calculateNSSF(grossSalary) {
+    const nssfRate = 0.06;
+    const nssf = grossSalary * nssfRate;
     return nssf;
   }
   
- module.exports ={   
- calculatePayee,
- calculateNHIF,
- calculateNSSF,
- }
+  module.exports = {
+    calculatePayee,
+    calculateNHIF,
+    calculateNSSF,
+  };
+  

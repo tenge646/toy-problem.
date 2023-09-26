@@ -9,7 +9,7 @@ function calculatePayee(basicSalary) {
       { minimum: 800001, maximum: Infinity, rate: 0.35 },
     ];
   
-    // Calculate tax based on the tax brackets
+   
     let tax = 0;
     for (const bracket of taxBrackets) {
       const { minimum, maximum, rate } = bracket;
@@ -25,12 +25,13 @@ function calculatePayee(basicSalary) {
     return tax;
   }
   
-  // Function to calculate NHIF deductions based on the basic salary
+  
+  
   function calculateNHIF(basicSalary) {
-    // Define NHIF rates
+   
     const nhifRates = [400, 600, 800, 1200, 1500];
   
-    // Determine the NHIF rate based on the basic salary
+    
     let nhif = 0;
     for (const rate of nhifRates) {
       if (basicSalary <= rate) {
@@ -41,12 +42,12 @@ function calculatePayee(basicSalary) {
     return nhif;
   }
   
-  // Function to calculate NSSF deductions based on the basic salary
+
   function calculateNSSF(basicSalary) {
-    // Define NSSF rate
-    const nssfRate = 0.06; // 6% of the basic salary
+   
+    const nssfRate = 0.06; 
   
-    // Calculate NSSF deductions
+   
     const nssf = basicSalary * nssfRate;
     return nssf;
   }
